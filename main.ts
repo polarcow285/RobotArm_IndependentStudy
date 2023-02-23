@@ -3,20 +3,23 @@ hummingbird.startHummingbird()
 hummingbird.setPositionServo(FourPort.One, 0)
 hummingbird.setPositionServo(FourPort.Two, 0)
 hummingbird.setPositionServo(FourPort.Three, 0)
+let link1CurrPos = 0
 basic.forever(function on_forever() {
+    let link1CurrPos: number;
     
-    for (let index = 0; index < 40; index++) {
-        hummingbird.setPositionServo(FourPort.One, count)
-        hummingbird.setPositionServo(FourPort.Two, count)
-        hummingbird.setPositionServo(FourPort.Three, count)
+    hummingbird.setPositionServo(FourPort.One, link1CurrPos)
+    link1CurrPos = link1CurrPos + 1
+    basic.pause(35)
+    /** 
+    while(link1CurrPos != 90):
+        hummingbird.set_position_servo(FourPort.ONE, link1CurrPos)
         basic.pause(35)
-        count += 2
-    }
-    for (let i = 0; i < 40; i++) {
-        hummingbird.setPositionServo(FourPort.One, count)
-        hummingbird.setPositionServo(FourPort.Two, count)
-        hummingbird.setPositionServo(FourPort.Three, count)
+        link1CurrPos = link1CurrPos + 1
+    basic.pause(1000)
+    while(link1CurrPos != 90):
+        hummingbird.set_position_servo(FourPort.ONE, link1CurrPos)
         basic.pause(35)
-        count -= 2
-    }
+        link1CurrPos = link1CurrPos - 1
+    
+ */
 })
