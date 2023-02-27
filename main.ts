@@ -1,25 +1,41 @@
-let count = 0
+let link1CurrPos = 0
+let link2CurrPos = 0
+let link3CurrPos = 0
 hummingbird.startHummingbird()
 hummingbird.setPositionServo(FourPort.One, 0)
 hummingbird.setPositionServo(FourPort.Two, 0)
 hummingbird.setPositionServo(FourPort.Three, 0)
-let link1CurrPos = 0
 basic.forever(function on_forever() {
-    let link1CurrPos: number;
-    
-    hummingbird.setPositionServo(FourPort.One, link1CurrPos)
-    link1CurrPos = link1CurrPos + 1
-    basic.pause(35)
-    /** 
-    while(link1CurrPos != 90):
-        hummingbird.set_position_servo(FourPort.ONE, link1CurrPos)
-        basic.pause(35)
-        link1CurrPos = link1CurrPos + 1
+    moveTo(0, 0, 0)
     basic.pause(1000)
-    while(link1CurrPos != 90):
-        hummingbird.set_position_servo(FourPort.ONE, link1CurrPos)
-        basic.pause(35)
-        link1CurrPos = link1CurrPos - 1
-    
- */
 })
+function moveTo(target1: number, target2: number, target3: number) {
+    
+    
+    
+    while (link1CurrPos != target1 || link2CurrPos != target2 || link3CurrPos != target3) {
+        if (link1CurrPos > target1) {
+            link1CurrPos -= 1
+        } else if (link1CurrPos < target1) {
+            link1CurrPos += 1
+        }
+        
+        if (link2CurrPos > target2) {
+            link2CurrPos -= 1
+        } else if (link2CurrPos < target2) {
+            link2CurrPos += 1
+        }
+        
+        if (link3CurrPos > target3) {
+            link3CurrPos -= 1
+        } else if (link3CurrPos < target3) {
+            link3CurrPos += 1
+        }
+        
+        hummingbird.setPositionServo(FourPort.One, link1CurrPos)
+        hummingbird.setPositionServo(FourPort.Two, link2CurrPos)
+        hummingbird.setPositionServo(FourPort.Three, link3CurrPos)
+        basic.pause(10)
+    }
+}
+
