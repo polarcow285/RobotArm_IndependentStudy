@@ -1,17 +1,20 @@
 link1CurrPos = 0
-link2CurrPos = 0
+link2CurrPos = 180
 link3CurrPos = 0
 hummingbird.start_hummingbird()
 hummingbird.set_position_servo(FourPort.ONE, 0)
-hummingbird.set_position_servo(FourPort.TWO, 0)
+hummingbird.set_position_servo(FourPort.TWO, 180)
 hummingbird.set_position_servo(FourPort.THREE, 0)
 
 def on_forever():
     moveTo(0, 0, 0)
     basic.pause(1000)
+    moveTo(90, 0, 90)
+    basic.pause(1000)
 basic.forever(on_forever)
 
 def moveTo(target1, target2, target3):
+    target2 = 180-target2
     global link1CurrPos
     global link2CurrPos
     global link3CurrPos

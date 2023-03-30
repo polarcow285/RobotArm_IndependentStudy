@@ -1,15 +1,18 @@
 let link1CurrPos = 0
-let link2CurrPos = 0
+let link2CurrPos = 180
 let link3CurrPos = 0
 hummingbird.startHummingbird()
 hummingbird.setPositionServo(FourPort.One, 0)
-hummingbird.setPositionServo(FourPort.Two, 0)
+hummingbird.setPositionServo(FourPort.Two, 180)
 hummingbird.setPositionServo(FourPort.Three, 0)
 basic.forever(function on_forever() {
     moveTo(0, 0, 0)
     basic.pause(1000)
+    moveTo(90, 0, 90)
+    basic.pause(1000)
 })
 function moveTo(target1: number, target2: number, target3: number) {
+    target2 = 180 - target2
     
     
     
